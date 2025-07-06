@@ -1,5 +1,6 @@
 import Course from "../models/Course.model.js";
-import Lecture from "../models/Lecture.model.js";
+import Lecture from "../models/lecture.model.js";
+
 
 // 📌 Create a new course
 export const createCourse = async (req, res) => {
