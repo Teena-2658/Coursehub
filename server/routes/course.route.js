@@ -1,5 +1,6 @@
-import express from 'express';
-import { isAuthenticated } from '../middleware/isAuthenticated.js';
+
+import express from "express";
+import { isAuthenticated } from "../middleware/isAuthenticated.js";
 import { 
   createCourse, 
   CreateLecture, 
@@ -9,36 +10,37 @@ import {
   getCourseLecture, 
   getCreatorCourse, 
   getPublishedCourse, 
-  removeLecture,
-  
-} from '../controller/Course.controller.js';
-import { singleUpload } from '../middleware/multer.js';
+  removeLecture 
+} from "../controller/Course.controller.js";
+import { singleUpload } from "../middleware/multer.js";
 
 const router = express.Router();
 
-// Create new course
-router.post("/", isAuthenticated, createCourse);
+// ✅ Create a new course
+router.post("/", isAuthenticated, singleUpload, createCourse);
 
-// Get all published courses
+// ✅ Get all published courses
 router.get("/published-courses", getPublishedCourse);
 
-// Get courses created by the authenticated user
+// ✅ Get all courses created by the authenticated creator
 router.get("/creator-courses", isAuthenticated, getCreatorCourse);
 
-// Update a course by ID
+// ✅ Update a course by ID
 router.put("/:courseId", isAuthenticated, singleUpload, editCourse);
 
-
-// Get a specific course by ID
+// ✅ Get a course by ID
 router.get("/:courseId", isAuthenticated, getCourseById);
 
-router.route("/:courseId/lecture").post(isAuthenticated, CreateLecture);
+// ✅ Add a lecture to a course
+router.post("/:courseId/lecture", isAuthenticated, CreateLecture);
 
-router.route("/:courseId/lecture").get(isAuthenticated, getCourseLecture);
+// ✅ Get lectures for a course
+router.get("/:courseId/lecture", isAuthenticated, getCourseLecture);
 
-router.route("/:courseId/lecture/:lectureId").post(isAuthenticated, editLecture);
+// ✅ Edit a specific lecture in a course
+router.post("/:courseId/lecture/:lectureId", isAuthenticated, editLecture);
 
-router.route("lecture/:lectureId").delete(isAuthenticated, removeLecture);
-
+// ✅ Delete a lecture by ID
+router.delete("/lecture/:lectureId", isAuthenticated, removeLecture);
 
 export default router;

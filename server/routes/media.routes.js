@@ -5,7 +5,7 @@ import getDataUri from "../utils/datauri.js";
 
 const router=express.Router()
 
-router.route("/upload-video").post(singleUpload,async(req,res)=>
+router.route("/upload/video").post(singleUpload,async(req,res)=>
 {
     try {
         const file=req.file;
