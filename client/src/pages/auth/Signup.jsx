@@ -61,7 +61,8 @@ const Signup = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-tr from-indigo-100 via-purple-100 to-pink-100 px-4">
+        <div className="flex justify-center items-center min-h-screen bg-gradient-to-tr from-indigo-100 via-purple-100 to-pink-100 px-4 pt-16">
+
             <div className="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-md transition-all duration-300">
                 <h1 className="text-3xl font-extrabold text-center text-purple-800 mb-2 tracking-tight mt-4">
                     Join the Course Hub

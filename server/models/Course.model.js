@@ -27,15 +27,15 @@ const CourseSchema = new mongoose.Schema({
   },
   enrolledStudents: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"  // Ensure the "User" model exists
+    ref: "User"
   }],
   lectures: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Lecture"  // Ensure the "Lecture" model exists
+    ref: "Lecture"
   }],
-  Creator: {  // Ensure you meant "Creator"
+  Creator: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"  // Ensure the "User" model exists
+    ref: "User"
   },
   isPublished: {
     type: Boolean,
@@ -43,4 +43,4 @@ const CourseSchema = new mongoose.Schema({
   },
 }, { timestamps: true });
 
-export const Course = mongoose.model("Course", CourseSchema);
+export default mongoose.model("Course", CourseSchema);
